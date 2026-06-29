@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 
 interface MetricCardProps {
   value: number;
@@ -12,10 +13,10 @@ interface MetricCardProps {
 export default function MetricCard({ value, suffix, label, description }: MetricCardProps) {
   const [count, setCount] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(cardRef, { once: true, margin: "-10% 0px" });
 
   useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
+    if (!isInView) return;
 
     let isReducedMotion = false;
     if (typeof window !== "undefined") {
@@ -28,51 +29,34 @@ export default function MetricCard({ value, suffix, label, description }: Metric
     }
 
     let animationFrameId: number;
+    const duration = 1500; // 1.5s
+    const startTime = performance.now();
 
-    const startCountUp = () => {
-      const duration = 1500; // 1.5s
-      const startTime = performance.now();
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Easing out quadratic
+      const easeProgress = progress * (2 - progress);
+      const currentVal = Math.floor(easeProgress * value);
 
-      const animate = (currentTime: number) => {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        
-        // Easing out quadratic
-        const easeProgress = progress * (2 - progress);
-        const currentVal = Math.floor(easeProgress * value);
+      setCount(currentVal);
 
-        setCount(currentVal);
-
-        if (progress < 1) {
-          animationFrameId = requestAnimationFrame(animate);
-        } else {
-          setCount(value);
-        }
-      };
-
-      animationFrameId = requestAnimationFrame(animate);
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setCount(value);
+      }
     };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting) {
-          startCountUp();
-          observer.unobserve(card);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    observer.observe(card);
+    animationFrameId = requestAnimationFrame(animate);
 
     return () => {
-      observer.disconnect();
       if (animationFrameId) {
         cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [value]);
+  }, [isInView, value]);
 
   return (
     <div
