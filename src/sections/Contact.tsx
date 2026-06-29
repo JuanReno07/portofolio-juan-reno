@@ -27,7 +27,7 @@ export default function Contact() {
       id: "linkedin",
       icon: Linkedin,
       label: "LinkedIn Profile",
-      value: "linkedin.com/in/yosafat-juan-reno-8886371b4",
+      value: "linkedin.com/in/yosafat-juan-reno",
       href: personalInfo.linkedin,
       actionLabel: "View Profile",
     },
