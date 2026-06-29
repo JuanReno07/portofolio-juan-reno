@@ -11,9 +11,7 @@ interface MetricCardProps {
 
 export default function MetricCard({ value, suffix, label, description }: MetricCardProps) {
   const [count, setCount] = useState(0);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const cardRef = useRef<HTMLDivElement>(null);
-  const animationRef = useRef<number | null>(null);
 
   useEffect(() => {
     const card = cardRef.current;
@@ -26,9 +24,10 @@ export default function MetricCard({ value, suffix, label, description }: Metric
 
     if (isReducedMotion) {
       setCount(value);
-      setHasAnimated(true);
       return;
     }
+
+    let animationFrameId: number;
 
     const startCountUp = () => {
       const duration = 1500; // 1.5s
@@ -45,21 +44,21 @@ export default function MetricCard({ value, suffix, label, description }: Metric
         setCount(currentVal);
 
         if (progress < 1) {
-          animationRef.current = requestAnimationFrame(animate);
+          animationFrameId = requestAnimationFrame(animate);
         } else {
           setCount(value);
         }
       };
 
-      animationRef.current = requestAnimationFrame(animate);
+      animationFrameId = requestAnimationFrame(animate);
     };
 
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting && !hasAnimated) {
-          setHasAnimated(true);
+        if (entry.isIntersecting) {
           startCountUp();
+          observer.unobserve(card);
         }
       },
       { threshold: 0.1 }
@@ -69,11 +68,11 @@ export default function MetricCard({ value, suffix, label, description }: Metric
 
     return () => {
       observer.disconnect();
-      if (animationRef.current) {
-        cancelAnimationFrame(animationRef.current);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
       }
     };
-  }, [value, hasAnimated]);
+  }, [value]);
 
   return (
     <div
