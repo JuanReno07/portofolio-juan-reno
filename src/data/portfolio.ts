@@ -6,7 +6,7 @@ export const personalInfo = {
   location: "Bekasi, Indonesia",
   email: "yosafat.juan07@gmail.com",
   phone: "0896 2680 4474",
-  linkedin: "https://www.linkedin.com/in/yosafat-juan-reno-8886371b4/",
+  linkedin: "https://www.linkedin.com/in/yosafat-juan-reno/",
   instagram: "https://www.instagram.com/juan_reno07",
   supportingStatement: "Managing reliable networks, systems, security, and IT support operations for more than 300 users.",
   introduction: "Experienced IT Infrastructure and Senior Support Officer with a proven track record of managing enterprise networks, core servers, and physical security systems. Skilled in coordinating multi-disciplinary support teams, administering firewall policies, and maintaining operational continuity.",
@@ -197,7 +197,7 @@ export const education: EducationItem[] = [
 export const contactInfo: ContactInfo = {
   email: "yosafat.juan07@gmail.com",
   phone: "0896 2680 4474",
-  linkedin: "https://www.linkedin.com/in/yosafat-juan-reno-8886371b4/",
+  linkedin: "https://www.linkedin.com/in/yosafat-juan-reno/",
   instagram: "https://www.instagram.com/juan_reno07",
   location: "Bekasi, Indonesia",
 };
