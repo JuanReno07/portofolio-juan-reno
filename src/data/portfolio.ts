@@ -5,7 +5,7 @@ export const personalInfo = {
   title: "IT Infrastructure & Senior Support Officer",
   location: "Bekasi, Indonesia",
   email: "yosafat.juan07@gmail.com",
-  phone: "0896 2680 4474",
+  phone: "0812 1341 4897",
   linkedin: "https://www.linkedin.com/in/yosafat-juan-reno/",
   instagram: "https://www.instagram.com/juan_reno07",
   supportingStatement: "Managing reliable networks, systems, security, and IT support operations for more than 300 users.",
@@ -196,7 +196,7 @@ export const education: EducationItem[] = [
 
 export const contactInfo: ContactInfo = {
   email: "yosafat.juan07@gmail.com",
-  phone: "0896 2680 4474",
+  phone: "0812 1341 4897",
   linkedin: "https://www.linkedin.com/in/yosafat-juan-reno/",
   instagram: "https://www.instagram.com/juan_reno07",
   location: "Bekasi, Indonesia",
