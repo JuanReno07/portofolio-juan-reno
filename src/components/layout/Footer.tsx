@@ -29,13 +29,15 @@ export default function Footer() {
           {/* Right Column: Links & Social */}
           <div className="flex flex-col items-center md:items-end gap-4">
             <div className="flex items-center gap-4">
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 hover:text-teal-400 hover:border-teal-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-teal-500"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5" />
-              </a>
+              {personalInfo.email && (
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-slate-400 hover:text-teal-400 hover:border-teal-500/30 transition-all focus:outline-none focus:ring-2 focus:ring-teal-500"
+                  aria-label="Email"
+                >
+                  <Mail className="h-5 w-5" />
+                </a>
+              )}
               {personalInfo.linkedin && (
                 <a
                   href={personalInfo.linkedin}

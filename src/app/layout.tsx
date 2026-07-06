@@ -62,8 +62,6 @@ export default function RootLayout({
     "@type": "Person",
     "name": "Yosafat Juan Reno",
     "jobTitle": "IT Infrastructure & Senior Support Officer",
-    "email": "",
-    "telephone": "",
     "worksFor": {
       "@type": "Organization",
       "name": "PT Prokemas Adhikari Kreasi",

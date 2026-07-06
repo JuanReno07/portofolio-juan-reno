@@ -20,7 +20,7 @@ export default function Contact() {
       icon: Phone,
       label: "Phone Number",
       value: personalInfo.phone,
-      href: `tel:${personalInfo.phone.replace(/\s+/g, "")}`,
+      href: `tel:${(personalInfo.phone || "").replace(/\s+/g, "")}`,
       actionLabel: "Call Direct",
     },
     {
@@ -48,6 +48,8 @@ export default function Contact() {
       actionLabel: "Primary Base",
     },
   ].filter(item => {
+    if (item.id === "email") return !!personalInfo.email;
+    if (item.id === "phone") return !!personalInfo.phone;
     if (item.id === "linkedin") return personalInfo.linkedin;
     if (item.id === "instagram") return personalInfo.instagram;
     return true;
