@@ -1,5 +1,18 @@
 import type { Metadata } from "next";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
@@ -90,7 +103,7 @@ export default function RootLayout({
         {/* Favicon placeholders */}
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>" />
       </head>
-      <body className="font-sans antialiased text-slate-200 bg-[#0B0F19] min-h-screen relative flex flex-col">
+      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased text-slate-200 bg-[#080C14] min-h-screen relative flex flex-col selection:bg-cyan-500/20 selection:text-cyan-300`}>
         {children}
       </body>
     </html>

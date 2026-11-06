@@ -37,24 +37,26 @@ export default function About() {
           {/* Left Side: Professional Photograph */}
           <div className="lg:col-span-5 flex justify-center order-2 lg:order-1">
             <Reveal>
-              <div className="relative w-full max-w-md h-[420px] sm:h-[480px]">
-                {/* Visual Accent Box */}
-                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/10 to-transparent rounded-2xl -z-10" />
-                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-teal-500/5 rounded-2xl blur-xl -z-10" />
+              <div className="relative w-full max-w-md h-[440px] sm:h-[500px]">
+                {/* Visual Glow */}
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/15 to-transparent rounded-3xl blur-xl -z-10" />
                 
                 {/* Image Wrap */}
-                <div className="w-full h-full rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/60 shadow-lg relative group">
+                <div className="w-full h-full rounded-2xl overflow-hidden border border-cyan-500/20 bg-slate-900/60 shadow-[0_12px_40px_-10px_rgba(0,0,0,0.8)] relative group">
                   <Image
                     src="/images/infrastructure-work-yosafat.jpg"
                     alt="Yosafat Juan Reno configuring a server rack patch panel"
                     fill
                     sizes="(max-w-768px) 100vw, 400px"
-                    className="object-cover object-[center_35%] filter brightness-95 group-hover:brightness-100 transition-all duration-500"
+                    className="object-cover object-[center_35%] filter brightness-95 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700"
                   />
                   {/* Floating Caption Tag */}
-                  <div className="absolute bottom-4 left-4 right-4 bg-slate-950/80 backdrop-blur-md border border-slate-800 rounded-lg p-3">
-                    <p className="text-xs font-semibold text-teal-400 uppercase tracking-wider">Field Operations</p>
-                    <p className="text-xs text-slate-300 mt-0.5">Configuring hardware patch panels at the Cikarang site rack.</p>
+                  <div className="absolute bottom-4 left-4 right-4 bg-slate-950/85 backdrop-blur-md border border-cyan-500/20 rounded-xl p-3.5 shadow-xl">
+                    <div className="flex items-center gap-2">
+                      <span className="h-2 w-2 rounded-full bg-cyan-400 animate-pulse" />
+                      <p className="text-[11px] font-mono font-semibold text-cyan-300 uppercase tracking-wider">Field Operations</p>
+                    </div>
+                    <p className="text-xs text-slate-300 mt-1 leading-snug">Managing core hardware, switches, and patch panels at the enterprise Cikarang rack.</p>
                   </div>
                 </div>
               </div>
@@ -65,23 +67,19 @@ export default function About() {
           <div className="lg:col-span-7 order-1 lg:order-2">
             
             <Reveal>
-              <span className="text-xs font-semibold uppercase tracking-wider text-teal-400">
-                Professional Profile
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-300 text-xs font-mono font-semibold uppercase tracking-wider">
+                Leadership & Profile
               </span>
             </Reveal>
             
             <Reveal delay={0.1}>
-              <h2 className="mt-2 text-3xl sm:text-4xl font-bold text-slate-100 font-sans">
-                About Yosafat Juan Reno
+              <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-100 font-sans tracking-tight">
+                Architecting Stable & Resilient Enterprise Infrastructure
               </h2>
             </Reveal>
 
             <Reveal delay={0.2}>
-              <div className="h-1 w-12 bg-teal-500 rounded-full mt-4" />
-            </Reveal>
-
-            <Reveal delay={0.3}>
-              <p className="mt-6 text-base text-slate-300 leading-relaxed">
+              <p className="mt-5 text-base text-slate-300 leading-relaxed font-normal">
                 {personalInfo.detailedAbout}
               </p>
               <p className="mt-4 text-sm sm:text-base text-slate-400 leading-relaxed">
@@ -90,17 +88,17 @@ export default function About() {
             </Reveal>
 
             {/* Micro Highlights Grid */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
               {highlights.map((hl, idx) => {
                 const IconComponent = hl.icon;
                 return (
                   <Reveal key={hl.title} delay={0.1 * idx + 0.3}>
-                    <div className="flex gap-3.5 items-start">
-                      <div className="p-2.5 bg-slate-900 border border-slate-800 rounded-lg text-teal-400 mt-0.5">
+                    <div className="p-4 rounded-xl glass-card glass-card-hover flex gap-3.5 items-start">
+                      <div className="p-2.5 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 shrink-0 mt-0.5">
                         <IconComponent className="h-5 w-5" />
                       </div>
                       <div>
-                        <h4 className="text-sm font-semibold text-slate-200">
+                        <h4 className="text-sm font-bold text-slate-200">
                           {hl.title}
                         </h4>
                         <p className="text-xs text-slate-400 mt-1 leading-relaxed">
