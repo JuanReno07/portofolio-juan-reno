@@ -24,8 +24,8 @@ export default function MetricCard({ value, suffix, label, description }: Metric
     }
 
     if (isReducedMotion) {
-      setCount(value);
-      return;
+      const id = requestAnimationFrame(() => setCount(value));
+      return () => cancelAnimationFrame(id);
     }
 
     let animationFrameId: number;
