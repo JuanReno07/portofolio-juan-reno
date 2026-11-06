@@ -14,7 +14,7 @@ const jetbrainsMono = JetBrains_Mono({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://portofolio-juan-reno.vercel.app";
 
 export const metadata: Metadata = {
   title: "Yosafat Juan Reno | IT Infrastructure & Senior Support Officer",
